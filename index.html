@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập sô lớp 241123</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+
+
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .header {
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 30px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: green;
+            color: white;
+            text-shadow: 10px 10px 10px black;
+            margin: 10px;
+            box-shadow: 10px 10px 10px black;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 40px;
+            ;
+            color: green;
+            text-shadow: 10px 10px 10px black;
+        }
+
+        .title-content {
+            font-size: 20px;
+        }
+        
+        .input {
+            text-align: center;
+            /* width: 500px; */
+            /* Chiều rộng */
+            height: 60px;
+            /* Chiều cao */
+            font-size: 20px;
+            border: 2px solid green;
+            /* Border */
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            /* Màu nền */
+            padding: 8px;
+            /* Khoảng cách từ nội dung đến mép của border */
+            box-shadow: 10px 10px 10px black;
+
+        }
+
+        .none {
+            display: none;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .select-box {
+            padding: 1px 0;
+        }
+
+        .num {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .display-content {
+
+            width: 100%;
+
+        }
+
+        .flashcard {
+            margin-top: 10px;
+            width: 100%;
+            height: 250px;
+            border: 3px solid rgb(16, 141, 16);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            box-shadow: 10px 10px 10px black;
+            perspective: 880px;
+            position: relative;
+        }
+
+        .card-back {
+            font-size: 37px;
+            text-align: center;
+            /* animation:flip-animate 1s linear ;   Làm xoay các ảnh */
+            transform-style: preserve-3d;
+            transition-duration: 0.5s;
+        }
+
+        #beto,
+        #hira {
+            font-size: 16px;
+        }
+
+        .flashcard:hover {
+            background-color: #f5f5f5;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: rgb(16, 141, 16);
+        }
+
+        .nav {
+            position: fixed;
+
+            bottom: 100px;
+        }
+
+        /* .remembered {
+            margin-right: 30px;
+        } */
+
+        select {
+            border: none;
+            background: green;
+            color: whitesmoke;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 22px;
+            box-shadow: 10px 10px 10px black;
+        }
+
+        .btn {
+            font-size: 25px;
+            padding: 10px 20px;
+            box-shadow: 2px 2px 2px black;
+            color: white;
+            text-shadow: 2px 2px 2px black;
+            border-radius: 5px;
+        }
+
+        .remembered {
+            background: green;
+
+        }
+
+        .forget {
+            background: red;
+        }
+
+        .again {
+            background: green;
+        }
+
+        .check {
+            display: none;
+        }
+
+        #vn,
+        #beto,
+        #kanji,
+        #hira {
+            display: none;
+        }
+
+        .right {
+            display: flex;
+            justify-content: right;
+            font-size: 20px;
+        }
+
+        #right {
+            position: absolute;
+            right: 10px;
+            top: -50px;
+        }
+
+        .opacity {
+            
+            color: red;
+            animation-name: opacity;
+            animation-duration: 3s;
+        }
+
+        .opacityNot {
+            
+            color: red;
+            animation: infinite;
+            animation-name: opacityNot;
+            animation-duration: 17s;
+            
+        }
+
+        .opacityNot2 {
+            
+            color: red;
+            
+            animation-name: opacityNot2;
+            animation-duration: 17s;
+            
+        }
+
+        .opacityOk {
+            font-size: 20px;
+            color: green;
+            animation-name: opacityOk;
+            animation-duration: 2s;
+        }
+
+        .hint{
+            background-color: green;
+            padding: 2px 4px;
+            box-shadow: 2px 2px 2px black;
+            color: white;
+            text-shadow: 2px 2px 2px black;
+            border-radius: 5px;
+        }
+
+        .message{
+            font-size: 15px;
+        }
+
+        @keyframes opacity {
+            from {
+                opacity: 1;
+                ;
+            }
+
+            to {
+                opacity: 0;
+                ;
+            }
+        }
+
+        @keyframes opacityOk {
+            from {
+                opacity: 1;
+                ;
+            }
+
+            to {
+                opacity: 0;
+                ;
+            }
+        }
+
+        @keyframes opacityNot {
+            from {
+                opacity: 1;
+                ;
+            }
+
+            to {
+                opacity: 0.3;
+                ;
+            }
+        }
+
+        @keyframes opacityNot2 {
+            from {
+                opacity: 1;
+                ;
+            }
+
+            to {
+                opacity: 0.3;
+                ;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <p>Hoang先生</p>
+            </div>
+            <div class="grade">
+                <p>241123</p>
+            </div>
+        </div>
+        <div class="title">
+            <p>頑張りましょう</p>
+        </div>
+        <div class="content">
+            <div>
+                
+                <br />
+                <span class="title-content">Bài tập số</span>
+            </div>
+
+        </div>
+        <br>
+        <div class="display-content" id="display-content">
+
+            <div class="num">
+
+                <div class="num" id="num">0</div>
+
+
+            </div>
+            <div class="flashcard" id="flashcard">
+                <div style="text-align: center;">
+                    <p class="title-content test">Nhập tên của bạn:</p> <br />
+                    <input placeholder="Nhập tên của bạn" class="input" />
+                    <br />
+                    <br />
+
+                    <p class="title-content message">ts</p>
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="navigation" id="navigation">
+            <button class="btn remembered control" onclick="handleOnclick()">Tiếp tục</button>
+        </div>
+        <select id="selectBox" hidden>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>ß
+        </select>
+    </div>
+
+    <script>
+        let studentName = "";
+        let btnName = "Tiếp tục";
+        let message = ""
+        let numberTest = 0;
+        let testContent = "Nhập tên của bạn:";
+        let focus = true;
+        let selectedValue = 1;
+        let currentNumber;
+        let currentIndex = 0;
+        let currentArray = [];
+        let timeId;
+
+        let listAnswerOK = ["Quá giỏi!!!", "Chính xác!!!", "Làm tốt lắm!!!", "Một câu trả lời xuất sắc"];
+        let listAnswerNot = ["Quá xui!!! Kiểm tra lại nào", "Vẫn chưa đúng lắm, xem lại lỗi bên dưới nhé!!!", "Gần đúng rồi,thử lại đi!!!", "Có gì đó sai sai, hãy nhìn lại một lần nữa"];
+
+        let listNumber = [
+            {
+                number: "998.2341",
+                hiragana: ["きゅうひゃくきゅうじゅうはちまんにせんさんびゃくよんじゅういち"]
+            },
+            {
+                number: "2314.5689",
+                hiragana: ["にせんさんびゃくじゅうよんまんごせんろっぴゃくはちじゅうきゅう"]
+            },
+            {
+                number: "3689.8870",
+                hiragana: ["さんぜんろっぴゃくはちじゅうきゅうまんはっせんはっぴゃくななじゅう"]
+            },
+            {
+                number: "1254.8620",
+                hiragana: ["せんにひゃくごじゅうよんまんはっせんろっぴゃくにじゅう"]
+            },
+            {
+                number: "2.6431.4537",
+                hiragana: ["におくろくせんよんひゃくさんじゅういちまんよんせんごひゃくさんじゅうなな"]
+            },
+            {
+                number: "7163.6536",
+                hiragana: ["ななせんひゃくろくじゅうさんまんろくせんごひゃくさんじゅうろく"]
+            },
+            {
+                number: "9725.6810",
+                hiragana: ["きゅうせんななひゃくにじゅうごまんろくせんはっぴゃくじゅう"]
+            },
+            {
+                number: "1450.5678",
+                hiragana: ["せんよんひゃくごじゅうまんごせんろっぴゃくななじゅうはち"]
+            },
+            {
+                number: "3456.9850",
+                hiragana: ["さんぜんよんひゃくごじゅうろくまんきゅうせんはっぴゃくごじゅう"]
+            },
+            {
+                number: "1298.9093",
+                hiragana: ["せんにひゃくきゅうじゅうはちまんきゅうせんきゅうじゅうさん"]
+            },
+            {
+                number: "3004.6587",
+                hiragana: ["さんぜんよんまんろくせんごひゃくはちじゅうなな"]
+            },
+            {
+                number: "3.7677.9815",
+                hiragana: ["さんおくななせんろっぴゃくななじゅうななまんきゅうせんはっぴゃくじゅうご"]
+            },
+            {
+                number: "4356.9876",
+                hiragana: ["よんせんさんびゃくごじゅうろくまんきゅうせんはっぴゃくななじゅうろく"]
+            },
+            {
+                number: "6430.3854",
+                hiragana: ["ろくせんよんひゃくさんじゅうまんさんぜんはっぴゃくごじゅうよん"]
+            },
+            {
+                number: "2245.9870",
+                hiragana: ["にせんにひゃくよんじゅうごまんきゅうせんはっぴゃくななじゅう"]
+            },
+            {
+                number: "4680.6822",
+                hiragana: ["よんせんろっぴゃくはちじゅうまんろくせんはっぴゃくにじゅうに"]
+            }
+        ]
+
+        currentArray = listNumber;
+        let param = {
+            btnName,
+            message,
+            numberTest,
+            testContent,
+            focus,
+            selectedValue
+        }
+        init(param);
+
+        function init({ btnName, message, numberTest, testContent, focus, selectedValue }) {
+            console.log(arguments)
+            var input = document.querySelector(".input");
+            var btn = document.querySelector(".control");
+            var messageValue = document.querySelector(".message");
+            var numValue = document.querySelector(".num");
+            var testValue = document.querySelector(".test");
+            var select = document.querySelector("#selectBox");
+
+            ((selectedValue == 3) || (selectedValue == 1)) && input.classList.remove("none");
+            focus && input.focus();
+            btn.innerHTML = btnName;
+            messageValue.innerHTML = message;
+            numValue.innerHTML = numberTest;
+            testValue.innerHTML = testContent;
+            select.value = selectedValue;
+        }
+
+        function handleOnclick() {
+            var select = document.querySelector("#selectBox");
+
+            var input = document.querySelector(".input");
+            switch (Number(select.value)) {
+                case 1:
+
+                    if (input.value == "") {
+                        param = {
+                            ...param,
+                            message: "Tên bạn không được để trống"
+                        }
+                        document.querySelector(".message").classList.add("error");
+                        init(param);
+                    } else {
+                        studentName = input.value;
+                        select.value = 2;
+                        document.querySelector(".message").classList.remove("error");
+                        document.querySelector(".test").classList.add("success");
+                        btnName = "Bắt đầu";
+                        message = "Vui lòng nhấn Bắt đầu để làm bài test!!!";
+                        testContent = `Chào mừng ${studentName} đã đến với bài kiểm tra số!!!`
+                        input.classList.add("none");
+                        selectedValue = select.value
+                        param = {
+                            ...param,
+                            message,
+                            btnName,
+                            testContent,
+                            selectedValue
+                        }
+                        init(param);
+                    }
+                    break;
+
+                case 2:
+                    var select = document.querySelector("#selectBox");
+                    var testValue = document.querySelector(".test");
+                    var input = document.querySelector(".input");
+                    var messageValue = document.querySelector(".message");
+
+                    testValue.classList.remove("success");
+                    input.value = "";
+                    input.placeholder = `Nhập đáp án của ${studentName}`;
+                    select.value = 3;
+                    message = "";
+                    selectedValue = select.value;
+                    currentNumber = listNumber.sort(() => Math.random() - 0.5)[0];
+                    testContent = `Hãy nhập số dưới sang hiragana:<br/> ${currentNumber.number} `;
+                    btnName = "Nộp";
+                    currentIndex++;
+                    numberTest = currentIndex + "/" + listNumber.length
+                    param = {
+                        ...param,
+                        message,
+                        selectedValue,
+                        testContent,
+                        btnName,
+                        numberTest
+                    }
+
+
+                    init(param);
+                    break;
+                case 3:
+                    console.log(currentArray)
+                    var inputText = input.value;
+                    if (inputText == "") {
+                        message = `${studentName} ơi, Bạn chưa nhập đáp án kìa!!!`;
+                        document.querySelector(".message").classList.add("opacity");
+                        param = {
+                            ...param,
+                            message
+                        }
+                        init(param)
+                        setTimeout(() => {
+                            message = ``;
+                            document.querySelector(".message").classList.remove("opacity");
+                            param = {
+                                ...param,
+                                message
+                            }
+                            init(param)
+                        }, 3000);
+                    }
+
+                    if (currentNumber.hiragana.includes(inputText)) {
+                        let random = Math.floor(Math.random() * 4);
+                        let messageOk = listAnswerOK[random];
+                        message = messageOk;
+                        document.querySelector(".message").classList.add("opacityOk");
+                        param = {
+                            ...param,
+                            message
+                        }
+                        init(param)
+                        timeId = setTimeout(() => {
+                            message = ``;
+                            document.querySelector(".message").classList.remove("opacityOk");
+                            param = {
+                                ...param,
+                                message
+                            }
+                            init(param)
+                        }, 2000);
+
+
+                        var arrayRemove = currentArray.filter(e => e !== currentNumber);
+                        currentArray = arrayRemove;
+                        if (currentArray.length == 0) {
+                            testContent = `${studentName} ơi, Bạn đã hoàn thành bài test!!!`;
+                            select.value = 4;
+                            selectedValue = select.value
+                            message = "Dành thời gian làm lại để ôn tập nhé";
+                            btnName = "Đã hoàn thành";
+                            input.classList.add("none");
+                            param = {
+                                ...param,
+                                message,
+                                testContent,
+                                selectedValue,
+                                btnName,
+                                message
+                            }
+                            init(param);
+                            clearTimeout(timeId)
+                        } else {
+                            currentIndex = currentIndex++;
+                            currentNumber = currentArray[0];
+                            input.focus();
+                            input.value = "";
+                            testContent = `Hãy nhập số dưới sang hiragana:<br/> ${currentNumber.number} `;
+                            currentIndex++;
+                            numberTest = currentIndex + "/" + listNumber.length;
+
+                            param = {
+                                ...param,
+                                testContent,
+                                numberTest,
+
+                            }
+
+                            init(param);
+                        }
+
+                    } else if (inputText != "") {
+                        let idSetTimeout;
+                        let random = Math.floor(Math.random() * 4);
+                        let messageNot = listAnswerNot[random];
+                        message = messageNot + "<br/>" + "<button class='hint'>xem gợi ý</button>";
+                            param = {
+                            ...param,
+                            message
+                        }
+                        init(param)
+                        let hintBtn = document.querySelector(".hint");
+                        console.log(hintBtn)
+                        
+                        
+                        document.querySelector(".message").classList.add("opacityNot");
+                        idSetTimeout = setTimeout(() => {
+                            message = ``;
+                            document.querySelector(".message").classList.remove("opacityNot");
+                            param = {
+                                ...param,
+                                message
+                            }
+                            init(param);
+                            console.log(111);
+                        }, 10000);
+                        
+
+                        hintBtn.addEventListener("click",()=>{
+                            let mes = document.querySelector(".message");
+                           input.focus();
+                           input.value = "";
+                            console.log(mes.classList); 
+
+                            // mes.classList.toggle("opacityNot");
+                            // mes.classList.toggle("opacityNot2")
+                           
+                            clearTimeout(idSetTimeout);
+
+                            messageNot = currentNumber.hiragana.join(" ");
+                            message = messageNot + "<br/>" + "<button class='hint'>xem gợi ý</button>" + "<br/>";
+                            // document.querySelector(".message").classList.remove("opacityNot");
+                            param = {
+                                ...param,
+                                message
+                            }
+                            init(param);
+                        })
+                        
+                        
+
+
+                    }
+
+                    break;
+                case 4:
+                    
+                    btnName = "Hoàn thành!!!";
+                    
+                    param = {
+                        ...param,
+                        btnName
+                    }
+                    init(param)
+                    break;
+
+                default: console.log("ERROR!!!")
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
